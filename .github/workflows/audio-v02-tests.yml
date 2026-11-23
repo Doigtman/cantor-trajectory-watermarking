@@ -21,7 +21,7 @@ jobs:
         run: python -m compileall -q fractal_wm.py tests experiments
       - name: Run non-regression suite
         run: python -m unittest discover -s tests -v
-      - name: Experimental benchmark smoke (not calibration)
+      - name: Install ffmpeg\n        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg\n      - name: Experimental benchmark smoke (not calibration)
         run: python -m experiments.audio_v02_benchmark --no-codecs --seconds 2 --seeds 11 --deltas 0.02 --output experiments/results/audio_v02_smoke.json
       - name: Store reproducible JSON artifact
         uses: actions/upload-artifact@v4
