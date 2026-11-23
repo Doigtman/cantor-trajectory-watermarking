@@ -40,10 +40,10 @@ class TestAudioV02(unittest.TestCase):
                 masks[(proc, k)] = m
             self.assertFalse(np.array_equal(masks[(proc, 0)], masks[(proc, 1)]))
 
-    @unittest.expectedFailure
-    def test_known_short_window_failure(self):
-        # Defaut de v0.2 : n_win=1, abscisses egales pour CubicSpline.
-        wm.perturbation(self.key, "time", 0, len(wm.band_bins()), 12)
+    def test_short_window_supported(self):
+        # max(n - 1, 1) garantit des abscisses strictement croissantes.
+        m = wm.perturbation(self.key, "time", 0, len(wm.band_bins()), 12)
+        self.assertEqual(m.shape, (len(wm.band_bins()), 12))
 
     def test_embed_preserves_length_and_finite_outputs(self):
         marked, fp = wm.embed(self.signal, self.key, delta=0.02)
