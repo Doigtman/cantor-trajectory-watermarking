@@ -8,6 +8,7 @@ de clés ne constituent ni des probabilités de sécurité ni des p-values fiabl
 """
 import json
 import platform
+import shutil
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -68,8 +69,7 @@ def run():
         "provenance": "fractal_wm.py v0.2; no source modification",
         "environment": {"python": platform.python_version(),
                         "numpy": np.__version__, "scipy": scipy.__version__,
-                        "ffmpeg": subprocess.run(["ffmpeg", "-version"],
-                          capture_output=True, text=True).stdout.splitlines()[0]},
+                        "ffmpeg": (subprocess.run(["ffmpeg", "-version"], capture_output=True, text=True).stdout.splitlines()[0] if shutil.which("ffmpeg") else "unavailable")},
         "parameters": {"seconds": args.seconds, "seeds": args.seeds,
                        "deltas": args.deltas, "n_null_internal": 6,
                        "attacks": attacks},
