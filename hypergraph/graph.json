@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "status": "provisional",
-  "reference_vertex": "H1",
+  "reference_vertex": "P1",
   "vertices": [
     {
       "id": "S0",
@@ -19,6 +19,12 @@
       "id": "H1",
       "page": "vertices/H1/README.md",
       "kind": "hyperprompt",
+      "status": "specified"
+    },
+    {
+      "id": "P1",
+      "page": "vertices/P1/README.md",
+      "kind": "product-authenticity",
       "status": "specified"
     }
   ],
@@ -43,6 +49,13 @@
       "target": "H1",
       "type": "research-continuation",
       "status": "documented"
+    },
+    {
+      "id": "e4",
+      "source": "H1",
+      "target": "P1",
+      "type": "research-continuation",
+      "status": "documented"
     }
   ],
   "reserved_edge_types": [
@@ -52,8 +65,11 @@
     "depends-on",
     "cross-audit",
     "pseudo-history-of",
-    "re-rooted-from"
+    "re-rooted-from",
+    "synthesis",
+    "multiplication-provisional"
   ],
   "drafts_policy": "explicit provenance; do not invent missing transcripts",
-  "notes": "A vertex is a standalone GitHub page. Edges point from source to target; relation typing is provisional."
+  "notes": "A vertex is a standalone GitHub page. Edges point from source to target; relation typing is provisional.",
+  "provenance_policy": "Tree by default: one parent for ordinary research continuations; multi-source synthesis or multiplication requires explicit edge type and justification. Cross-references are not provenance edges."
 }
