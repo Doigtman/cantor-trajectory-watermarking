@@ -1,0 +1,30 @@
+name: Audio v0.2 non-regression
+on:
+  push:
+    branches: [research/audio-v02-calibration-20261123]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install runtime dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "numpy>=1.24,<3" "scipy>=1.10,<2"
+      - name: Compile
+        run: python -m compileall -q fractal_wm.py tests experiments
+      - name: Run non-regression suite
+        run: python -m unittest discover -s tests -v
+      - name: Install ffmpeg\n        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg\n      - name: Experimental benchmark smoke (not calibration)
+        run: python -m experiments.audio_v02_benchmark --no-codecs --seconds 2 --seeds 11 --deltas 0.02 --output experiments/results/audio_v02_smoke.json
+      - name: Store reproducible JSON artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: audio-v02-smoke
+          path: experiments/results/audio_v02_smoke.json
