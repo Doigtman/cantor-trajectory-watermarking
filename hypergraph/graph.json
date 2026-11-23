@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1-draft",
+  "status": "provisional",
+  "reference_vertex": "H1",
+  "vertices": [
+    {
+      "id": "S0",
+      "page": "vertices/S0/README.md",
+      "kind": "source",
+      "status": "historical"
+    },
+    {
+      "id": "A1",
+      "page": "vertices/A1/README.md",
+      "kind": "experiment",
+      "status": "implemented-tests-passed"
+    },
+    {
+      "id": "H1",
+      "page": "vertices/H1/README.md",
+      "kind": "hyperprompt",
+      "status": "specified"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "S0",
+      "target": "A1",
+      "type": "research-continuation",
+      "status": "documented"
+    },
+    {
+      "id": "e2",
+      "source": "S0",
+      "target": "H1",
+      "type": "conceptual-source",
+      "status": "documented"
+    },
+    {
+      "id": "e3",
+      "source": "A1",
+      "target": "H1",
+      "type": "research-continuation",
+      "status": "documented"
+    }
+  ],
+  "reserved_edge_types": [
+    "copy-of",
+    "refines",
+    "generalizes",
+    "depends-on",
+    "cross-audit",
+    "pseudo-history-of",
+    "re-rooted-from"
+  ],
+  "drafts_policy": "explicit provenance; do not invent missing transcripts",
+  "notes": "A vertex is a standalone GitHub page. Edges point from source to target; relation typing is provisional."
+}
