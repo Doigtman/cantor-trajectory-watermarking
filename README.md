@@ -39,7 +39,7 @@ This document has two parts.
 
 **Definition (monochrome Cantor fractal).** The limit of this process after infinitely many steps is a monochrome Cantor fractal. The classical triadic Cantor set is the case where P is the single centred open interval of relative length 1/3.
 
-![Figure 1](images/fig1_en.png)
+![Figure 1](images/fig1_en.svg)
 
 *Figure 1. Iterated ablation of [0,1] (levels 0 to 5) by a monochrome partition with two connected components, P = P₁ ∪ P₂ = (0.18, 0.32) ∪ (0.58, 0.74), outlined in red at level 0. At each level the same pattern is applied, rescaled, inside every remaining interval. The resulting fractal has similarity dimension d ≈ 0.753, the solution of 0.18^d + 2·0.26^d = 1.*
 
@@ -68,7 +68,7 @@ A rational monochrome partition (all endpoints rational) is, by definition, an i
 
 The Cartesian product of two monochrome Cantor fractals is again (topologically) a monochrome-type Cantor fractal in two dimensions, with dimension equal to the sum of the two factors' dimensions (Part II, Section 2). This is what makes a 2D grid — a spectrogram, an image — a natural home for these objects.
 
-![Figure 2](images/fig2_en.png)
+![Figure 2](images/fig2_en.svg)
 
 *Figure 2. Product F × F of the fractal of Figure 1 with itself, at truncation levels 1 to 4 (black: kept cells). Such a 2D pattern can select time-frequency cells of a spectrogram or blocks of an image.*
 
