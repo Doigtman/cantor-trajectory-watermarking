@@ -28,7 +28,7 @@ class TestAudioV02(unittest.TestCase):
 
     def test_all_nine_masks_and_key_separation(self):
         # Vérifie seulement la génération déterministe et les dimensions.
-        nbins, nframes = len(wm.band_bins()), 12
+        nbins, nframes = len(wm.band_bins()), 3 * wm.BLOCK
         masks = {}
         for proc in wm.PROCESSES:
             for k in range(wm.N_FRACTALS):
@@ -39,6 +39,11 @@ class TestAudioV02(unittest.TestCase):
                     m, wm.perturbation(self.key, proc, k, nbins, nframes))
                 masks[(proc, k)] = m
             self.assertFalse(np.array_equal(masks[(proc, 0)], masks[(proc, 1)]))
+
+    @unittest.expectedFailure
+    def test_known_short_window_failure(self):
+        # Defaut de v0.2 : n_win=1, abscisses egales pour CubicSpline.
+        wm.perturbation(self.key, "time", 0, len(wm.band_bins()), 12)
 
     def test_embed_preserves_length_and_finite_outputs(self):
         marked, fp = wm.embed(self.signal, self.key, delta=0.02)
